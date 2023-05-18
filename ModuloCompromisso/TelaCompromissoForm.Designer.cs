@@ -1,4 +1,5 @@
-﻿namespace E_Agenda.ModuloCompromisso
+﻿using E_Agenda.ModuloContato;
+namespace E_Agenda.ModuloCompromisso
 {
     partial class TelaCompromissoForm
     {
@@ -28,6 +29,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             btnCancelar = new Button();
             btnGravar = new Button();
             label1 = new Label();
@@ -38,8 +40,8 @@
             dtpInicio = new DateTimePicker();
             label5 = new Label();
             dtpTermino = new DateTimePicker();
-            checkBox1 = new CheckBox();
-            comboBox1 = new ComboBox();
+            MarcarContato = new CheckBox();
+            DropDeContatos = new ComboBox();
             rbRemoto = new RadioButton();
             rbPresencial = new RadioButton();
             label6 = new Label();
@@ -47,6 +49,8 @@
             txtID = new TextBox();
             txtRemoto = new TextBox();
             txtPresencial = new TextBox();
+            listagemContatoContolBindingSource = new BindingSource(components);
+            ((System.ComponentModel.ISupportInitialize)listagemContatoContolBindingSource).BeginInit();
             SuspendLayout();
             // 
             // btnCancelar
@@ -70,6 +74,7 @@
             btnGravar.TabIndex = 2;
             btnGravar.Text = "Gravar";
             btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click;
             // 
             // label1
             // 
@@ -145,24 +150,27 @@
             dtpTermino.Size = new Size(128, 23);
             dtpTermino.TabIndex = 11;
             // 
-            // checkBox1
+            // MarcarContato
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Font = new Font("Segoe UI", 7F, FontStyle.Regular, GraphicsUnit.Point);
-            checkBox1.Location = new Point(62, 147);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(233, 16);
-            checkBox1.TabIndex = 12;
-            checkBox1.Text = "Deseja marcar um contato neste compromisso?";
-            checkBox1.UseVisualStyleBackColor = true;
+            MarcarContato.AutoSize = true;
+            MarcarContato.Font = new Font("Segoe UI", 7F, FontStyle.Regular, GraphicsUnit.Point);
+            MarcarContato.Location = new Point(62, 147);
+            MarcarContato.Name = "MarcarContato";
+            MarcarContato.Size = new Size(233, 16);
+            MarcarContato.TabIndex = 12;
+            MarcarContato.Text = "Deseja marcar um contato neste compromisso?";
+            MarcarContato.UseVisualStyleBackColor = true;
+            MarcarContato.CheckedChanged += MarcarContato_CheckedChanged;
             // 
-            // comboBox1
+            // DropDeContatos
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(62, 169);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(136, 23);
-            comboBox1.TabIndex = 13;
+            DropDeContatos.FormattingEnabled = true;
+            DropDeContatos.Location = new Point(62, 169);
+            DropDeContatos.Name = "DropDeContatos";
+            DropDeContatos.Size = new Size(136, 23);
+            DropDeContatos.TabIndex = 13;
+            DropDeContatos.SelectedIndexChanged += DropDeContatos_SelectedIndexChanged;
+            
             // 
             // rbRemoto
             // 
@@ -175,6 +183,7 @@
             rbRemoto.TabStop = true;
             rbRemoto.Text = "Remoto:";
             rbRemoto.UseVisualStyleBackColor = true;
+            rbRemoto.CheckedChanged += rbRemoto_CheckedChanged;
             // 
             // rbPresencial
             // 
@@ -187,6 +196,7 @@
             rbPresencial.TabStop = true;
             rbPresencial.Text = "Presencial:";
             rbPresencial.UseVisualStyleBackColor = true;
+            rbPresencial.CheckedChanged += rbPresencial_CheckedChanged;
             // 
             // label6
             // 
@@ -225,6 +235,10 @@
             txtPresencial.Size = new Size(164, 23);
             txtPresencial.TabIndex = 20;
             // 
+            // listagemContatoContolBindingSource
+            // 
+            listagemContatoContolBindingSource.DataSource = typeof(ModuloContato.ListagemContatoContol);
+            // 
             // TelaCompromissoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -237,8 +251,8 @@
             Controls.Add(label6);
             Controls.Add(rbPresencial);
             Controls.Add(rbRemoto);
-            Controls.Add(comboBox1);
-            Controls.Add(checkBox1);
+            Controls.Add(DropDeContatos);
+            Controls.Add(MarcarContato);
             Controls.Add(dtpTermino);
             Controls.Add(label5);
             Controls.Add(dtpInicio);
@@ -252,6 +266,7 @@
             Name = "TelaCompromissoForm";
             ShowIcon = false;
             Text = "Controle de Compromissos";
+            ((System.ComponentModel.ISupportInitialize)listagemContatoContolBindingSource).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -268,8 +283,8 @@
         private DateTimePicker dtpInicio;
         private Label label5;
         private DateTimePicker dtpTermino;
-        private CheckBox checkBox1;
-        private ComboBox comboBox1;
+        private CheckBox MarcarContato;
+        private ComboBox DropDeContatos;
         private RadioButton rbRemoto;
         private RadioButton rbPresencial;
         private Label label6;
@@ -277,5 +292,6 @@
         private TextBox txtID;
         private TextBox txtRemoto;
         private TextBox txtPresencial;
+        private BindingSource listagemContatoContolBindingSource;
     }
 }

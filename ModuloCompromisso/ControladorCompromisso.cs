@@ -32,9 +32,10 @@ namespace E_Agenda.ModuloCompromisso
 
             if (OpcaoEscolhida == DialogResult.OK)
             {
+                List<Contato> contatos = new TelaCompromissoForm(contatos);
                 Compromisso compromisso = telaCompromisso.Compromisso;
                 repositorioCompromisso.Inserir(compromisso);
-                CarregarContatos();
+                CarregarCompromissos();
                 MessageBox.Show("Compromisso Gravado com Sucesso!");
 
             }
@@ -59,17 +60,17 @@ namespace E_Agenda.ModuloCompromisso
         {
 
             Compromisso compromisso = listagemCompromisso.ObterCompromissoSelecionado();
-            DialogResult OpcaoEscolhida = MessageBox.Show($"Deseja excluir o compromisso {compromisso.nome}?", "Exclusão de Compromissos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            DialogResult OpcaoEscolhida = MessageBox.Show($"Deseja excluir o compromisso {compromisso.assunto}?", "Exclusão de Compromissos", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
             if (OpcaoEscolhida == DialogResult.OK)
             {
 
                 repositorioCompromisso.Excluir(compromisso);
-                CarregarContatos();
+                CarregarCompromissos();
                 MessageBox.Show("Compromisso Removido com Sucesso!");
 
             }
         }
-        private void CarregarContatos()
+        private void CarregarCompromissos()
         {
             List<Compromisso> compromissos = repositorioCompromisso.SelecionarTodos();
             listagemCompromisso.AtualizarRegistros(compromissos);

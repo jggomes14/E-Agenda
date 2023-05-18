@@ -11,12 +11,25 @@ namespace E_Agenda.ModuloCompromisso
     public class Compromisso : EntidadeBase
     {
         public int id;
-        public string Assunto;
-        public string Data;
-        public string HoraDeInicio;
-        public string HoraDeTermino;
-        public string empresa;
+        public string assunto;
+        public DateTime data;
+        public DateTime horaDeInicio;
+        public DateTime horaDeTermino;
         public Contato contato;
+        public bool vaiTerAlguem;
+        public bool ehPresencial;
+        public string local;
+
+        public Compromisso(string assunto, DateTime data, DateTime horaDeInicio, DateTime horaDeTermino, bool ehPresencial, bool vaiTerAlguem, string local, Contato contato)
+        {
+
+            this.assunto = assunto;
+            this.data = data;
+            this.horaDeInicio = horaDeInicio;
+            this.horaDeTermino = horaDeTermino;
+            this.contato = contato;
+            this.ehPresencial = ehPresencial;
+        }
 
     }
 
